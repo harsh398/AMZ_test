@@ -2,15 +2,14 @@ package TestModules;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import PageObjects.homePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-import PageObjects.PageObjectFile;
 public class LoginTest  {
 /*Declaring a global Username to assign value of the username*/
 public static String GlobalUsername;
@@ -27,7 +26,7 @@ public static void A(WebDriver driver,List<HashMap<String,String>> datamap) thro
 	WebDriverWait wait = new WebDriverWait(driver, 5);
 
 	//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='nav-flyout-ya-signin']/a/span")));
-	PageObjectFile.sigin_in.click();
+	homePage.sigin_in.click();
 	System.out.println("2. User Clicked on Sign in");
 	System.out.println("3.Login Page will open Up");
 }
@@ -35,13 +34,13 @@ public static void A(WebDriver driver,List<HashMap<String,String>> datamap) thro
 
 		WebDriverWait wait1 = new WebDriverWait(driver, 5);
 		System.out.println("4.Entered the Email");
-		PageObjectFile.email.sendKeys(datamap.get(0).get("username"));
+		homePage.email.sendKeys(datamap.get(0).get("username"));
 		driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
-		PageObjectFile.Continue.click();
+		homePage.Continue.click();
 		System.out.println("5.Entered the Password");
 		driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
-		PageObjectFile.password.sendKeys(datamap.get(0).get("password"));
-		PageObjectFile.signin_button.click();
+		homePage.password.sendKeys(datamap.get(0).get("password"));
+		homePage.signin_button.click();
 	}
 		public static void C(WebDriver driver,List<HashMap<String,String>> datamap) throws Exception {
 

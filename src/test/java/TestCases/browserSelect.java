@@ -5,13 +5,12 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -25,7 +24,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 
-public class Hooks {
+public class browserSelect {
 	public static String mailscreenshotpath;
 	 public static WebDriver driver;
 	public static Properties Config = new Properties();
@@ -44,7 +43,27 @@ public class Hooks {
 	logs.debug("Loaded the Config property file");
 	//Below we are loading the Or file which holds all the xpaths
 	//the test will open the browser whichever is written in the config file
-	driver = new ChromeDriver();
+
+		String browser = Config.getProperty("browser");
+		driver=null;
+
+		if (browser.equals("chrome")) {
+
+			//System.setProperty("webdriver.chrome.driver", "C:\\Users\\Aman\\Documents\\Selenium\\Drivers\\chromedriver.exe");
+			driver = new ChromeDriver();
+
+		} else if (browser.equals("firefox")) {
+
+		//	System.setProperty("webdriver.gecko.driver", "C:\\Users\\Aman\\Documents\\Selenium\\Drivers\\geckodriver.exe");
+			driver = new FirefoxDriver();
+
+
+		} else if (browser.equals("InternetExplorer")) {
+
+		//	System.setProperty("webdriver.ie.driver", "C:\\Users\\Aman\\Documents\\Selenium\\Drivers\\IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+
+		}
 	logs.debug("Opened the Browser");
 	driver.get(Config.getProperty("testsiteurl"));
 	//above code will check for the website

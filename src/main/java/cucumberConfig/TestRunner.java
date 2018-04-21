@@ -10,7 +10,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
     @CucumberOptions(
 
             monochrome = true,
-            features = "C:\\Users\\ME\\Downloads\\Compressed\\AMA-master\\AMZ\\src\\main\\java\\cucumberConfig\\AmazonApplication.feature"
+            features = "C:\\Users\\ME\\Downloads\\Compressed\\AMZ_test-master\\AMZ_test-master\\src\\main\\java\\cucumberConfig\\AmazonApplication.feature"
             ,glue     = {"TestCases"}
             ,tags = {"@RegressionTest"}
 
